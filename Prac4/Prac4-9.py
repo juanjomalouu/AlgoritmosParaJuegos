@@ -9,7 +9,7 @@ def GenerateRandomList(A,n):
     return A
 
 def maxConsecutiveArray(A,minIndex,maxIndex):
-    
+
     if(minIndex==maxIndex)
         return A[minIndex]
     else
