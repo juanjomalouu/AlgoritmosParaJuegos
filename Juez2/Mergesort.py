@@ -32,5 +32,6 @@ def merge(A, p, q, r):
 
 N = int(input())
 numData = list(map(int, input().strip().split(" ")))
-mergesort(numData,0,N-2)
-print(numData)
+mergesort(numData,0,N-1)
+for i in numData:
+    print(i,"" ,end="")
