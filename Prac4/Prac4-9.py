@@ -1,20 +1,33 @@
 
-from random import randint
-tamanio = int(input())
 
-def GenerateRandomList(A,n):
-    for i in range(n):
-        k = randint(-20,20)
-        A.append(k)
-    return A
+def sumaMaxDyV (v, ini, fin):
+    if ini>fin:
+        result = 0
+    else:
+        if ini == fin:
+            result = v[ini]
+        else:
+            mitad = (ini+fin) //2
+            sumaMaxIzq = sumaMaxDyV(v,ini,mitad)
+            sumaMaxDer = sumaMaxDyV(v, mitad +1, fin)
+            suma=0
+            sumaMaxI= 0
+            for i in range(mitad, ini-1, -1):
+                suma += v[i]
+                if suma>sumaMaxI:
+                    sumaMaxI=suma
+            suma = 0
+            sumaMaxD = 0
+            for i in range(mitad+1, fin +1):
+                suma += v[i]
+                if suma> sumaMaxD:
+                    sumaMaxD = suma
+                maxSumaCentral = sumaMaxI + sumaMaxD
+                result = max(sumaMaxIzq, sumaMaxDer, maxSumaCentral)
+    return result
 
-def maxConsecutiveArray(A,minIndex,maxIndex):
+v = [-2, 11, -4, 13, -5, -2]
+print("El vector es: ", v)
 
-    if(minIndex==maxIndex)
-        return A[minIndex]
-    else
-
-n = int(input())
-A = list()
-A = GenerateRandomList(A,n)
-print(maxConsecutiveArray(A,0,len(A)-1))
+sumaMax = sumaMaxDyV(v, 0, len(v)-1)
+print(sumaMax)
