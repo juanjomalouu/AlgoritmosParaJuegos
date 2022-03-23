@@ -32,3 +32,5 @@ for i in listaNivelJugador:
             print(listaNiveles[indice[0]-1],listaNiveles[indice[0]+1])
         else:
             print(listaNiveles[indice[0]], listaNiveles[indice[0] + 1])
+
+
