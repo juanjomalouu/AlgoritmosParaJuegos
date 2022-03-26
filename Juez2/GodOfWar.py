@@ -34,3 +34,30 @@ for i in listaNivelJugador:
             print(listaNiveles[indice[0]], listaNiveles[indice[0] + 1])
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
