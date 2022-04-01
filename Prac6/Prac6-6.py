@@ -74,7 +74,7 @@ def comprobarBloque(sudoku,f,c,num):
     while bloqueOk and i < iniF + 3:
         j = iniC
         while bloqueOk and j < iniC + 3:
-            bloqueOk =
+            bloqueOk =3
 
 def solverSudokuVA(sudoku,i):
     if esSolucion(sudoku,i):
