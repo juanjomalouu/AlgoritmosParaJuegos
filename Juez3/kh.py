@@ -1,20 +1,55 @@
 
+def comprobarConexion(compConexas, seleccionado):
+    anadido = False
+    i=0
+    borrado=False
+    j = 0
+    while not anadido and i < len(compConexas):
+        j = i + 1
+        if seleccionado[0] in compConexas[i]:
+            while borrado == False and j < len(compConexas):
+                if seleccionado[1] in compConexas[j]:
+                    compConexas[i].extend(compConexas[j])
+                    del compConexas[j]
+                    borrado=True
+                j += 1
+            if borrado == False:
+                compConexas[i].append(seleccionado[1])
+            anadido = True
+        elif seleccionado[1] in compConexas[i]:
+            while borrado == False and j < len(compConexas):
+                if seleccionado[0] in compConexas[j]:
+                    compConexas[i].extend(compConexas[j])
+                    del compConexas[j]
+                    borrado = True
+                j += 1
+            if borrado == False:
+                compConexas[i].append(seleccionado[0])
+            anadido = True
+        i+=1
+    if anadido == False:
+        compConexas.append([seleccionado[0],seleccionado[1]])
+
+    return compConexas
 
 def kruskal(candidatos,N):
     sol =[]
     compConexas=[]
-    while not len(sol) == N and candidatos !=[]:
+    while not len(sol) == N-1 and candidatos !=[]:
         seleccionado = candidatos[0]
         if compConexas == []:
-            compConexas.append(seleccionado[0])
-            compConexas.append(seleccionado[1])
+            compConexas.append([seleccionado[0],seleccionado[1]])
+            sol.append(seleccionado)
         else:
-            if not seleccionado[0] in compConexas and not seleccionado[1] in compConexas:
-                if not seleccionado[0] in compConexas:
-                    compConexas.append(seleccionado[0])
-                else:
-                    compConexas.append(seleccionado[1])
-                sol.append(seleccionado)
+            #Este if es el que falla
+            i = 0
+            anado = False
+            while i < len(compConexas) and not anado:
+                if not seleccionado[0] in compConexas[i] or not seleccionado[1] in compConexas[i]:
+                    compConexas = comprobarConexion(compConexas, seleccionado)
+                    sol.append(seleccionado)
+                    anado = True
+                i+=1
         candidatos.remove(seleccionado)
     return sol
 
@@ -25,9 +60,8 @@ listaCarreteras = [0]*numCarre
 
 for i in range(numCarre):
     listaCarreteras[i] = list(map(int,input().strip().split()))
-print(listaCarreteras)
+
 listaCarreteras.sort(key=lambda  x:x[2])
-print(listaCarreteras)
 suma=0
 listaSol = kruskal(listaCarreteras,numUniv)
 for i in range(len(listaSol)):
