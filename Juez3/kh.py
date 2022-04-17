@@ -42,13 +42,14 @@ def kruskal(candidatos,N):
             sol.append(seleccionado)
         else:
             #Este if es el que falla
-            i = 0
-            anado = False
-            while i < len(compConexas) and not anado:
-                if not seleccionado[0] in compConexas[i] or not seleccionado[1] in compConexas[i]:
+            estaDentro = False
+            i=0
+            while i < len(compConexas) and not estaDentro:
+                if seleccionado[0] in compConexas[i] and seleccionado[1] in compConexas[i]:
+                    estaDentro = True
+                else:
                     compConexas = comprobarConexion(compConexas, seleccionado)
                     sol.append(seleccionado)
-                    anado = True
                 i+=1
         candidatos.remove(seleccionado)
     return sol
@@ -61,7 +62,7 @@ listaCarreteras = [0]*numCarre
 for i in range(numCarre):
     listaCarreteras[i] = list(map(int,input().strip().split()))
 
-listaCarreteras.sort(key=lambda  x:x[2])
+listaCarreteras.sort(key=lambda x:x[2])
 suma=0
 listaSol = kruskal(listaCarreteras,numUniv)
 for i in range(len(listaSol)):
