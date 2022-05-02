@@ -34,6 +34,7 @@ def solve(lab, r, c, k, steps):
 
 
 lab, steps = readLabyrinth()
+print(lab)
 paso = 1
 lab[0][0] = 1
 [lab, isSol] = solve(lab, 0, 0, paso+1, steps)
