@@ -23,6 +23,7 @@ for i in range(M):
 listaAsignaturas.sort(key = lambda x:x[1])
 
 listaCalculos = algoritmoVoraz(listaAsignaturas.copy())
+print(listaCalculos)
 
 for i in range(M):
     j=0
@@ -38,3 +39,15 @@ for i in range(M):
         if j >= len(listaCalculos) and encontrado == False:
             print(len(listaCalculos))
         j+=1
+
+
+
+
+
+
+
+
+
+
+
+

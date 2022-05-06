@@ -61,7 +61,6 @@ if __name__ == "__main__":
         datos["valor"].append(valor)
         datos["peso"].append(peso)
 
-
     solucion = {}
     solucion['objetos'] = [0] * N
     solucion['peso'] = 0
